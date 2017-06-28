@@ -19,6 +19,7 @@ export TSLIB_CALIBFILE=/etc/pointercal
 
 export QWS_DISPLAY=:1
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/Trolltech/QtEmbedded-4.7.0-arm/lib/:$LD_LIBRARY_PATH
 export PATH=/bin:/sbin:/usr/bin/:/usr/sbin:/usr/local/bin
 
 if [ -c ${TSLIB_TSDEVICE} ]; then
@@ -36,5 +37,7 @@ export QWS_KEYBOARD=TTY:/dev/tty1
 export HOME=/root
 
 
-/bin/NewATMCardManageSystem -qws -nomouse
+/bin/NewATMCardManageSystem -qws -nomouse &
+/bin/UdpMulticastClient -qws &
+
 hotplug
